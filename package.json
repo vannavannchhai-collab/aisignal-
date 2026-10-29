@@ -1,0 +1,31 @@
+{
+  "name": "aisignal-bypass-pro",
+  "version": "1.0.0",
+  "description": "AISIGNAL BYPASS PRO - All-in-One Link Bypass, URL Unshortener, Cleaner, Safety Checker & Redirect Tracer (Khmer + English, Gaming RGB)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/smoke.js"
+  },
+  "keywords": [
+    "bypass",
+    "unshorten",
+    "url-cleaner",
+    "redirect-checker",
+    "link-bypass",
+    "khmer"
+  ],
+  "author": "AISIGNAL",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "qrcode": "^1.5.4"
+  }
+}

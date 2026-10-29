@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ AISIGNAL BYPASS PRO — Bypass Link លឿនបំផុត</title>
+<meta name="description" content="All-in-One Link Bypass, URL Unshortener, Tracker Cleaner, Safety Checker & Redirect Tracer. Free, no sign-up. Khmer + English.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Kantumruy+Pro:wght@400;500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="lang-km">
+<canvas id="particles"></canvas>
+<header class="topbar">
+  <a class="logo" href="#" data-nav="home"><span class="logo-bolt">⚡</span> AI<span class="rgb-text">SIGNAL</span> <span class="logo-pro">BYPASS PRO</span></a>
+  <nav class="nav" id="mainNav">
+    <a href="#" data-nav="home" class="nav-link active" data-i18n="nav_home">ទំព័រដើម</a>
+    <a href="#" data-nav="bulk" class="nav-link" data-i18n="nav_bulk">Bulk Bypass</a>
+    <a href="#" data-nav="tools" class="nav-link" data-i18n="nav_tools">ឧបករណ៍</a>
+    <a href="#" data-nav="supported" class="nav-link" data-i18n="nav_supported">Supported</a>
+    <a href="#" data-nav="history" class="nav-link" data-i18n="nav_history">ប្រវត្តិ</a>
+    <a href="#" data-nav="stats" class="nav-link" data-i18n="nav_stats">ស្ថិតិ</a>
+    <a href="#" data-nav="api" class="nav-link" data-i18n="nav_api">API</a>
+    <a href="#" data-nav="faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
+  </nav>
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="km">🇰🇭 KM</button>
+    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+  </div>
+  <button id="hamburger" aria-label="menu">☰</button>
+</header>
+
+<main>
+<!-- ========== HOME ========== -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="badge rgb-border" data-i18n="hero_badge">⚡ ALL-IN-ONE • FREE</div>
+    <h1 class="hero-title"><span class="rgb-animated" data-i18n="hero_title">BYPASS LINK លឿនបំផុត!</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub"></p>
+    <div class="live-stats-mini" id="liveStatsMini">⚡ Server: <span class="dot-online"></span> Online • <span id="miniTotal">0</span> bypassed</div>
+  </div>
+
+  <div class="bypass-card rgb-border-animated">
+    <div class="input-row">
+      <input id="urlInput" type="url" data-i18n-ph="placeholder" placeholder="Paste link..." autocomplete="off" spellcheck="false">
+      <button id="pasteBtn" class="btn ghost" data-i18n="paste">📋 Paste</button>
+      <button id="clearBtn" class="btn ghost" data-i18n="clear">✕</button>
+    </div>
+    <div class="options">
+      <label><input type="checkbox" id="optClean" checked> <span data-i18n="opt_clean"></span></label>
+      <label><input type="checkbox" id="optSafety" checked> <span data-i18n="opt_safety"></span></label>
+      <label><input type="checkbox" id="optPreview" checked> <span data-i18n="opt_preview"></span></label>
+    </div>
+    <button id="bypassBtn" class="btn mega rgb-btn" data-i18n="bypass_now">🚀 BYPASS NOW!</button>
+    <div class="examples"><span data-i18n="examples"></span>
+      <button class="chip example-chip">https://bit.ly/4nBQexample</button>
+      <button class="chip example-chip">https://tinyurl.com/2xyzab</button>
+      <button class="chip example-chip">https://example.com/page?utm_source=fb&fbclid=AbC123&id=42</button>
+      <button class="chip example-chip">https://youtu.be/dQw4w9WgXcQ?si=tracker123</button>
+      <button class="chip example-chip">https://github.com</button>
+    </div>
+    <div id="loadingSteps" class="steps hidden">
+      <div class="step" data-step="1"><span class="step-ico">🌐</span> <span data-i18n="step1"></span></div>
+      <div class="step" data-step="2"><span class="step-ico">🔁</span> <span data-i18n="step2"></span></div>
+      <div class="step" data-step="3"><span class="step-ico">🎯</span> <span data-i18n="step3"></span></div>
+      <div class="step" data-step="4"><span class="step-ico">🧹</span> <span data-i18n="step4"></span></div>
+      <div class="step" data-step="5"><span class="step-ico">🛡️</span> <span data-i18n="step5"></span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+    </div>
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <div id="resultBox" class="result hidden">
+      <h2 data-i18n="result_success">✅ Bypass successful!</h2>
+      <label class="result-label" data-i18n="final_url"></label>
+      <div class="final-row"><input id="finalUrl" readonly><button id="copyBtn" class="btn primary" data-i18n="copy"></button></div>
+      <div class="action-row">
+        <a id="openBtn" class="btn primary" target="_blank" rel="noopener noreferrer nofollow" data-i18n="open_link"></a>
+        <button id="favBtn" class="btn ghost" data-i18n="save_fav"></button>
+        <button id="qrBtn" class="btn ghost" data-i18n="qr"></button>
+      </div>
+      <div id="qrBox" class="hidden"><img id="qrImg" alt="QR Code"></div>
+      <div class="meta-grid">
+        <div class="meta-card"><span data-i18n="original"></span><b id="mOriginal">-</b></div>
+        <div class="meta-card"><span data-i18n="redirects"></span><b id="mRedirects">0</b></div>
+        <div class="meta-card"><span data-i18n="removed_trackers"></span><b id="mTrackers">0</b></div>
+        <div class="meta-card"><span data-i18n="status"></span><b id="mStatus">-</b></div>
+        <div class="meta-card"><span data-i18n="time"></span><b id="mTime">-</b></div>
+        <div class="meta-card safety-card"><span data-i18n="safetyScore"></span>
+          <div class="gauge"><div class="gauge-arc"><span id="safetyScore">-</span></div></div><b id="safetyLevel">-</b>
+          <ul id="safetyReasons" class="reasons"></ul>
+        </div>
+      </div>
+      <div id="noteBox" class="note hidden"></div>
+      <div id="previewBox" class="preview hidden">
+        <h3 data-i18n="preview_title"></h3>
+        <div class="preview-card"><img id="pvImage" alt=""><div><h4 id="pvTitle"></h4><p id="pvDesc"></p><small id="pvDomain"></small></div></div>
+      </div>
+      <details class="chain-details"><summary data-i18n="chain_title"></summary><ol id="chainList" class="chain"></ol></details>
+      <details class="chain-details" id="extractedWrap"><summary data-i18n="extracted"></summary><ul id="extractedList" class="extracted"></ul></details>
+    </div>
+  </div>
+
+  <h2 class="section-title rgb-text" data-i18n="features_title"></h2>
+  <div id="featuresGrid" class="features-grid"></div>
+</section>
+
+<!-- ========== BULK ========== -->
+<section class="page" id="page-bulk">
+  <h1 class="page-title rgb-text" data-i18n="bulk_title"></h1><p class="page-sub" data-i18n="bulk_sub"></p>
+  <div class="card"><textarea id="bulkInput" rows="8" placeholder="https://bit.ly/aaa&#10;https://tinyurl.com/bbb&#10;https://example.com/?utm_source=x&id=1"></textarea>
+    <button id="bulkBtn" class="btn mega rgb-btn" data-i18n="bulk_btn"></button>
+    <div class="action-row"><button id="copyAllBtn" class="btn ghost" data-i18n="copy_all"></button><button id="exportCsvBtn" class="btn ghost" data-i18n="export_csv"></button><button id="exportTxtBtn" class="btn ghost" data-i18n="export_txt"></button></div>
+    <div id="bulkResults"></div>
+  </div>
+</section>
+
+<!-- ========== TOOLS ========== -->
+<section class="page" id="page-tools">
+  <h1 class="page-title rgb-text" data-i18n="tools_title"></h1>
+  <div class="tools-grid">
+    <div class="card tool-card"><h3 data-i18n="tool_cleaner"></h3><input id="cleanInput" placeholder="https://example.com/?utm_source=fb&fbclid=123&id=9"><button class="btn primary tool-run" data-tool="clean" data-i18n="run"></button><pre id="cleanOut" class="tool-out"></pre></div>
+    <div class="card tool-card"><h3 data-i18n="tool_safety"></h3><input id="safetyInput" placeholder="https://suspicious-site.xyz/login-verify"><button class="btn primary tool-run" data-tool="safety" data-i18n="run"></button><pre id="safetyOut" class="tool-out"></pre></div>
+    <div class="card tool-card"><h3 data-i18n="tool_trace"></h3><input id="traceInput" placeholder="https://bit.ly/xxxx"><button class="btn primary tool-run" data-tool="trace" data-i18n="run"></button><pre id="traceOut" class="tool-out"></pre></div>
+    <div class="card tool-card"><h3 data-i18n="tool_qr"></h3><input id="qrInput" placeholder="https://example.com"><button class="btn primary tool-run" data-tool="qr" data-i18n="run"></button><div id="qrOut" class="tool-out center"></div></div>
+  </div>
+</section>
+
+<!-- ========== SUPPORTED ========== -->
+<section class="page" id="page-supported">
+  <h1 class="page-title rgb-text" data-i18n="supported_title"></h1>
+  <div class="card"><input id="supportedSearch" data-i18n-ph="search" placeholder="Search...">
+    <div class="filters"><button class="chip filter-chip active" data-cat="">All</button><button class="chip filter-chip" data-cat="shortener">🔗 Shortener</button><button class="chip filter-chip" data-cat="ad">📢 Ad / Interstitial</button><button class="chip filter-chip" data-cat="social">📱 Social</button><button class="chip filter-chip" data-cat="file">📁 File</button><button class="chip filter-chip" data-cat="general">🌐 General</button></div>
+    <p id="supportedCount"></p><div id="supportedGrid" class="supported-grid"></div>
+  </div>
+</section>
+
+<!-- ========== HISTORY ========== -->
+<section class="page" id="page-history">
+  <h1 class="page-title rgb-text" data-i18n="history_title"></h1>
+  <div class="card"><div class="action-row"><label><input type="checkbox" id="favOnly"> <span data-i18n="favorites"></span></label><input id="historySearch" placeholder="🔎 Search history..."><button id="clearHistoryBtn" class="btn danger" data-i18n="clear_history"></button></div>
+  <div id="historyList"></div></div>
+</section>
+
+<!-- ========== STATS ========== -->
+<section class="page" id="page-stats">
+  <h1 class="page-title rgb-text" data-i18n="stats_title"></h1>
+  <div class="stats-grid">
+    <div class="stat-card rgb-border"><span data-i18n="stat_total"></span><b id="stTotal">0</b></div>
+    <div class="stat-card rgb-border"><span data-i18n="stat_success"></span><b id="stSuccess">-</b></div>
+    <div class="stat-card rgb-border"><span data-i18n="stat_avg"></span><b id="stAvg">-</b></div>
+    <div class="stat-card rgb-border"><span data-i18n="stat_domains"></span><b id="stDomains">-</b></div>
+  </div>
+  <div class="card"><h3>🏆 Top Domains</h3><canvas id="topChart" width="900" height="320"></canvas><h3>🕘 Recent Activity (domain only)</h3><ul id="recentList" class="recent"></ul></div>
+</section>
+
+<!-- ========== API ========== -->
+<section class="page" id="page-api">
+  <h1 class="page-title rgb-text" data-i18n="api_title"></h1><p class="page-sub" data-i18n="api_sub"></p>
+  <div class="card">
+    <table class="api-table"><thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead><tbody>
+      <tr><td><span class="m post">POST</span></td><td><code>/api/bypass</code></td><td>Bypass one URL → finalUrl, chain, metadata, safety</td></tr>
+      <tr><td><span class="m post">POST</span></td><td><code>/api/bulk</code></td><td>Bypass up to 20 URLs <code>{"urls":[...]}</code></td></tr>
+      <tr><td><span class="m post">POST</span></td><td><code>/api/clean</code></td><td>Remove tracking parameters only</td></tr>
+      <tr><td><span class="m post">POST</span></td><td><code>/api/safety</code></td><td>Safety score analysis only</td></tr>
+      <tr><td><span class="m post">POST</span></td><td><code>/api/trace</code></td><td>Redirect chain trace only</td></tr>
+      <tr><td><span class="m get">GET</span></td><td><code>/api/qr?text=URL</code></td><td>Generate QR code (data URL)</td></tr>
+      <tr><td><span class="m get">GET</span></td><td><code>/api/supported</code></td><td>List supported domains (<code>?q= &category=</code>)</td></tr>
+      <tr><td><span class="m get">GET</span></td><td><code>/api/stats</code></td><td>System statistics</td></tr>
+      <tr><td><span class="m get">GET</span></td><td><code>/api/health</code></td><td>Health check</td></tr>
+    </tbody></table>
+    <h3>Example (curl)</h3>
+    <pre class="code">curl -X POST /api/bypass \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://bit.ly/xxxx"}'</pre>
+    <h3 data-i18n="try_it"></h3>
+    <div class="input-row"><input id="apiTryInput" placeholder="https://example.com/?utm_source=test&id=1"><button id="apiTryBtn" class="btn primary">▶️ Send POST /api/bypass</button></div>
+    <pre id="apiTryOut" class="tool-out tall"></pre>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="page" id="page-faq">
+  <h1 class="page-title rgb-text" data-i18n="faq_title"></h1>
+  <div id="faqList" class="faq-list"></div>
+  <div class="note" data-i18n="disclaimer"></div>
+</section>
+</main>
+
+<footer><p data-i18n="footer"></p><p class="disclaimer" data-i18n="disclaimer"></p></footer>
+<div id="toast" class="toast hidden"></div>
+<script src="/js/i18n.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
